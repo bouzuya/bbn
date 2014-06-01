@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/bouzuya/bbn/issues"
   },
-  "homepage": "https://github.com/bouzuya/bbn"
+  "homepage": "https://github.com/bouzuya/bbn",
+  "dependencies": {
+    "commander-b": "^0.2.1"
+  }
 }
