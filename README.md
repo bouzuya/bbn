@@ -10,7 +10,7 @@ A command-line tool for [http://blog.bouzuya.net/]().
 
     $ cat ~/.bbn.json
     {
-      "directory": "/home/bouzuya/blog.bouzuya.net/"
+      "directory": "/home/bouzuya/blog.bouzuya.net"
     }
 
     $ bbn new
