@@ -6,20 +6,28 @@ var Commander = require('commander-b');
 var Moment = require('moment');
 
 var program = Commander('bbn').version(require('../package.json').version);
-program.command('new', 'create a new post').action(function() {
-  var options = {};
+// new command
+program
+.command('new', 'create a new post')
+.option('-d, --date <date>')
+.action(function(options) {
+  options = options || {};
+
+  var config = {};
   var configFile = Path.join(process.env.HOME, '.bbn.json');
   if (Fs.existsSync(configFile)) {
-    options = require(configFile);
+    config = require(configFile);
   }
+  options.directory = config.directory || '/home/bouzuya/blog.bouzuya.net';
 
-  var m = Moment();
-  var now = m.format();
-  var today = m.format('YYYY-MM-DD');
+  var timeString = options.date ? options.date + 'T23:59:59+09:00' : null;
+  var m = timeString ? Moment(timeString, 'YYYY-MM-DDThh:mm:ssZ') : Moment();
+  var time = m.format();
+  var date = m.format('YYYY-MM-DD');
   var template = [
     '---',
     'layout: post',
-    'pubdate: "' + now + '"',
+    'pubdate: "' + time + '"',
     'title: ',
     'tags: []',
     'minutes: ',
@@ -27,10 +35,16 @@ program.command('new', 'create a new post').action(function() {
     '---',
     ''
   ].join('\n');
-  var directory = options.directory || '/home/bouzuya/blog.bouzuya.net';
-  var file = today + '-diary.markdown';
+  var directory = options.directory;
+  var file = date + '-diary.markdown';
   var path = Path.join(directory, 'src/_posts', file);
-  Fs.writeFileSync(path, template, { encoding: 'utf8' });
-  console.log('create a new post ' + file);
+  if (!Fs.existsSync(path)) {
+    Fs.writeFileSync(path, template, { encoding: 'utf8' });
+    console.log('create a new post ' + file);
+    return 0;
+  } else {
+    console.error('the post ' + file + ' already exists');
+    return 1;
+  }
 });
 program.execute();
