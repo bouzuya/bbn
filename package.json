@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/bouzuya/bbn",
   "dependencies": {
-    "commander-b": "^0.2.1"
+    "commander-b": "^0.2.1",
+    "moment": "^2.6.0"
   }
 }
