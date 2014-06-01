@@ -1,9 +1,30 @@
 #!/usr/bin/env node
 
-var commander = require('commander-b');
+var Fs = require('fs');
+var Path = require('path');
+var Commander = require('commander-b');
+var Moment = require('moment');
 
-var program = commander('bbn').version(require('../package.json').version);
-program.command('new').action(function() {
-  console.log('NEW!');
+var program = Commander('bbn').version(require('../package.json').version);
+program.command('new', 'create a new post').action(function() {
+  var m = Moment();
+  var now = m.format();
+  var today = m.format('YYYY-MM-DD');
+  var template = [
+    '---',
+    'layout: post',
+    'pubdate: "' + now + '"',
+    'title: ',
+    'tags: []',
+    'minutes: ',
+    'pagetype: posts',
+    '---',
+    ''
+  ].join('\n');
+  var directory = '/home/bouzuya/blog.bouzuya.net';
+  var file = today + '-diary.markdown';
+  var path = Path.join(directory, 'src/_posts', file);
+  Fs.writeFileSync(path, template, { encoding: 'utf8' });
+  console.log('create a new post ' + file);
 });
 program.execute();
