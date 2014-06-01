@@ -4,7 +4,7 @@ A command-line tool for [http://blog.bouzuya.net/]().
 
 ## Installation
 
-    $ npm install bouzuya/bbn
+    $ npm install -g bouzuya/bbn
 
 ## Usage
 
