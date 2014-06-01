@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+var commander = require('commander-b');
+
+var program = commander('bbn').version(require('../package.json').version);
+program.command('new').action(function() {
+  console.log('NEW!');
+});
+program.execute();
