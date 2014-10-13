@@ -13,7 +13,7 @@ var getWeekendTemplate = function(m, options) {
     var file = post.date + '-diary.markdown';
     var path = Path.join(directory, 'src/_posts', file);
     var data = Fs.readFileSync(path, { encoding: 'utf8' });
-    post.title = data.match(/^title: (.*)$/m)[0];
+    post.title = data.match(/^title: (.*)$/m)[1];
     return post;
   });
   return [
