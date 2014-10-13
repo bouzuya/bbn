@@ -7,7 +7,7 @@ var Moment = require('moment');
 
 var getWeekendTemplate = function(m, options) {
   var posts = [1, 2, 3, 4, 5, 6, 7].map(function(i) {
-    return { date: Moment(m).subtract('days', i).format('YYYY-MM-DD') };
+    return { date: Moment(m).subtract(i, 'days').format('YYYY-MM-DD') };
   }).map(function(post) {
     var directory = options.directory;
     var file = post.date + '-diary.markdown';
