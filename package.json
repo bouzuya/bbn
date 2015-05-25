@@ -1,6 +1,6 @@
 {
   "name": "bbn",
-  "description": "A command-line tool for http://blog.bouzuya.net/",
+  "description": "A command-line tool for blog.bouzuya.net",
   "version": "0.2.2",
   "author": {
     "name": "bouzuya",

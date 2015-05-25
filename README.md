@@ -1,6 +1,8 @@
 # bbn
 
-A command-line tool for [http://blog.bouzuya.net/]().
+A command-line tool for [blog.bouzuya.net](http://blog.bouzuya.net).
+
+See: [bouzuya/blog.bouzuya.net][]
 
 ## Installation
 
@@ -19,3 +21,5 @@ A command-line tool for [http://blog.bouzuya.net/]().
 ## License
 
 MIT
+
+[bouzuya/blog.bouzuya.net]: https://github.com/bouzuya/blog.bouzuya.net
