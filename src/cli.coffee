@@ -1,4 +1,4 @@
-fs = require 'fs'
+fs = require 'fs-extra'
 path = require 'path'
 commander = require 'commander-b'
 moment = require 'moment'
@@ -23,7 +23,7 @@ getCommand = ->
       return 1
     else
       data = getTemplate date, options
-      fs.writeFileSync file, data, encoding: 'utf8'
+      fs.outputFileSync file, data, encoding: 'utf8'
       console.log "create a new post #{file}"
       return 0
   program
