@@ -60,6 +60,8 @@ getTemplateForWeekend = (m, options) ->
     title: getTitle options.directory, date
     url: "http://blog.bouzuya.net/#{date.replace(/-/g, '/')}/"
   """
+  # 今週のふりかえり
+
   #{posts.map((i) -> "- [#{i.date} #{i.title}][#{i.date}]").join('\n')}
 
   #{posts.map((i) -> "[#{i.date}]: #{i.url}").join('\n')}
