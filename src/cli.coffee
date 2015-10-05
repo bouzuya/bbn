@@ -63,8 +63,6 @@ getTemplateForWeekend = (m, options) ->
   # 今週のふりかえり
 
   #{posts.map((i) -> "- [#{i.date} #{i.title}][#{i.date}]").join('\n')}
-
-  #{posts.map((i) -> "[#{i.date}]: #{i.url}").join('\n')}
   """
 
 getTitle = (dir, date) ->
