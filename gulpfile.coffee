@@ -3,10 +3,8 @@ espower = require 'gulp-espower'
 gulp = require 'gulp'
 gutil = require 'gulp-util'
 mocha = require 'gulp-mocha'
-run = require 'run-sequence'
 sourcemaps = require 'gulp-sourcemaps'
 uglify = require 'gulp-uglify'
-watch = require 'gulp-watch'
 
 ignoreError = (stream) ->
   stream.on 'error', (e) ->
@@ -38,14 +36,3 @@ gulp.task 'build-test-dev', ->
 gulp.task 'test', ['build-test'], ->
   gulp.src './.tmp/**/*.js'
   .pipe mocha()
-
-gulp.task 'test-dev', ['build-test-dev'], ->
-  gulp.src './.tmp/**/*.js'
-  .pipe ignoreError mocha()
-
-gulp.task 'watch', ['test-dev'], ->
-  watch [
-    './src/**/*.coffee'
-    './test/**/*.coffee'
-  ], ->
-    run 'test-dev'
